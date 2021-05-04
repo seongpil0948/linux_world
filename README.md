@@ -1,2 +1,3 @@
-# linux_world
-# linux_world
+# mapping ubuntu and macOS
+
+- systemctl == brew
