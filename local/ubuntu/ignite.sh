@@ -1,1 +1,1 @@
-docker run -it my-ubuntu-image
+docker run --rm -it local-ubuntu-image:latest
