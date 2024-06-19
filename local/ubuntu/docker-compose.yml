@@ -1,4 +1,3 @@
-version: '3'
 services:
   local-ubuntu-1:
     restart: always
@@ -14,6 +13,20 @@ services:
       - ./ssh:/root/.ssh
     networks:
       - my-network
+    deploy:
+      resources:
+        limits:
+          cpus: '1'
+          memory: 500M
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+    env_file:
+      - .env.local-ubuntu-1
+      - .env.ubuntu
+
 
   local-ubuntu-2:
     restart: always
@@ -26,6 +39,21 @@ services:
       - ./ssh:/root/.ssh
     networks:
       - my-network
+    depends_on:
+      - local-ubuntu-1
+    deploy:
+      resources:
+        limits:
+          cpus: '1'
+          memory: 500M      
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"  
+    env_file:
+      - .env.local-ubuntu-2
+      - .env.ubuntu        
 
   local-ubuntu-3:
     restart: always
@@ -38,7 +66,30 @@ services:
       - ./ssh:/root/.ssh
     networks:
       - my-network
+    depends_on:
+      - local-ubuntu-1
+      - local-ubuntu-2
+    deploy:
+      resources:
+        limits:
+          cpus: '1'
+          memory: 500M
+        # reservations:
+        #   cpus: '0.0001'
+        #   memory: 20M      
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"     
+    env_file:
+      - .env.local-ubuntu-3
+      - .env.ubuntu           
 
 networks:
   my-network:
     external: true
+  # my-overlay-network:
+  #   driver: overlay 
+    
+
