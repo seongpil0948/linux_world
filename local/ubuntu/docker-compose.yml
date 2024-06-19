@@ -1,0 +1,44 @@
+version: '3'
+services:
+  local-ubuntu-1:
+    restart: always
+    build: .
+    # build:
+      # context: ./local/ubuntu
+      # dockerfile: Dockerfile
+    image: local-ubuntu-image-1:latest
+    ports:
+      - "2222:22"
+    volumes:
+      - ./data:/data
+      - ./ssh:/root/.ssh
+    networks:
+      - my-network
+
+  local-ubuntu-2:
+    restart: always
+    build: .
+    image: local-ubuntu-image-2:latest
+    ports:
+      - "2223:22"
+    volumes:
+      - ./data:/data
+      - ./ssh:/root/.ssh
+    networks:
+      - my-network
+
+  local-ubuntu-3:
+    restart: always
+    build: .
+    image: local-ubuntu-image-3:latest
+    ports:
+      - "2224:22"    
+    volumes:
+      - ./data:/data
+      - ./ssh:/root/.ssh
+    networks:
+      - my-network
+
+networks:
+  my-network:
+    external: true
