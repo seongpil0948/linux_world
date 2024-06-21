@@ -42,5 +42,6 @@ RUN echo 'root:1234qwer!!' | chpasswd
 # 포트 22 열기
 EXPOSE 22
 
-# 기본 명령어 설정
-CMD ["/usr/sbin/sshd", "-D"]
+CMD ["/usr/sbin/sshd", "-D", "-e"]
+# -D: 데몬으로 실행하지 않고 프로세스로 실행
+# -e: 로그를 표준 오류로 출력(for logging)
