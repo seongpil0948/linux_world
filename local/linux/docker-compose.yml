@@ -11,9 +11,8 @@ services:
       - "2222:22"
     volumes:
       - ./data:/data
-      - ./ssh:/root/.ssh
     networks:
-      - my-network
+      - local-linux-network
     deploy:
       resources:
         limits:
@@ -39,9 +38,8 @@ services:
       - "2223:22"
     volumes:
       - ./data:/data
-      - ./ssh:/root/.ssh
     networks:
-      - my-network
+      - local-linux-network
     deploy:
       resources:
         limits:
@@ -67,9 +65,8 @@ services:
       - "2224:22"
     volumes:
       - ./data:/data
-      - ./ssh:/root/.ssh
     networks:
-      - my-network
+      - local-linux-network
     depends_on:
       - local-ubuntu-1
     deploy:
@@ -88,7 +85,7 @@ services:
           
 
 networks:
-  my-network:
+  local-linux-network:
     external: true
   # my-overlay-network:
   #   driver: overlay 

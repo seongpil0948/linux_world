@@ -1,0 +1,23 @@
+---
+
+- name: Basic Health Check
+  hosts: all
+  tasks:
+    - name: Check if system is up and running
+      ping:
+
+    - name: Check disk usage
+      command: df -h
+      register: disk_usage
+
+    - name: Display disk usage
+      debug:
+        var: disk_usage.stdout_lines
+
+    - name: Check memory usage
+      command: free -m
+      register: memory_usage
+
+    - name: Display memory usage
+      debug:
+        var: memory_usage.stdout_lines

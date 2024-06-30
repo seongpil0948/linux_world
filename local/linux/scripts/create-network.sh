@@ -1,6 +1,6 @@
 # create network if not exists
-if [ ! "$(docker network ls | grep my-network)" ]; then
-  docker network create my-network
+if [ ! "$(docker network ls | grep local-linux-network)" ]; then
+  docker network create local-linux-network
 fi
 
 if [ ! "$(docker network ls | grep jenkins)" ]; then

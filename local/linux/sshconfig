@@ -1,8 +1,0 @@
-# Read more about SSH config files: https://linux.die.net/man/5/ssh_config
-Host 2222
-    HostName 127.0.0.1
-    User root
-    Port 2222
-
-
-

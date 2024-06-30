@@ -5,8 +5,9 @@ LABEL description="Local Linux Development Environment"
 # 작업 디렉토리 설정 및 파일 복사
 WORKDIR /app
 COPY ./app /app
+COPY ./ssh /root/.ssh
 
-# 필요한 패키지 설치 및 로케일 설정
+
 # 필요한 패키지 설치 및 로케일 설정
 RUN dnf update -y && dnf install -y \
     epel-release \
@@ -29,12 +30,20 @@ RUN dnf update -y && dnf install -y \
 
 # SSH 서버 설정 및 호스트 키 생성
 RUN mkdir /var/run/sshd \
-    && ssh-keygen -A \
     && echo 'root:1234qwer!!' | chpasswd \
+    && ssh-keygen -A \
+    && sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config \
     && sed -i 's/#PermitRootLogin yes/PermitRootLogin yes/' /etc/ssh/sshd_config 
+# RUN mkdir /var/run/sshd \
+    # && echo "root:$(openssl passwd -1 '1234qwer!!')" | chpasswd \
+    # && sed -i 's/#PermitRootLogin yes/PermitRootLogin yes/' /etc/ssh/sshd_config \
+    # && sed -i 's/#PasswordAuthentication yes/PasswordAuthentication yes/' /etc/ssh/sshd_config \
+    # && sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/' /etc/ssh/sshd_config \
+    # && sed -i 's/#UsePAM yes/UsePAM yes/' /etc/ssh/sshd_config 
+    # && usermod --password $(echo "1234qwer!!" | openssl passwd -1 -stdin) root
     # && echo 'export LANG=ko_KR.UTF-8' >> /etc/profile
 
-
+# RUN sed -i 's/^session\s\+required\s\+pam_loginuid.so/#&/' /etc/pam.d/sshd
 
 # 포트 22 열기
 EXPOSE 22

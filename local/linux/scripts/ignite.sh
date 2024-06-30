@@ -2,7 +2,7 @@ docker-compose up \
   --remove-orphans \
   --detach \
   --build 
-
+sh scripts/clear-known-hosts.sh
 # docker-compose up  --remove-orphans
 # docker run \
 #   --rm \
