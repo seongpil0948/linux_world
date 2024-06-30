@@ -8,7 +8,7 @@
         "Sonarqube"
     ],
     "files.exclude": {
-        "refs/**": true,
+        // "refs/**": true,
         "**/.git": true,
         "**/.svn": true,
         "**/.hg": true,
@@ -17,5 +17,9 @@
         "**/Thumbs.db": true,
         "**/node_modules": true,
         "**/build": true,
+    },
+    "files.readonlyInclude": {
+        "**/node_modules/**": true,
+        "refs/**": true
     }
 }
