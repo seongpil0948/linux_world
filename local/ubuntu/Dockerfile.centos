@@ -1,0 +1,43 @@
+FROM quay.io/centos/centos:stream9
+
+LABEL description="Local Linux Development Environment"
+
+# 작업 디렉토리 설정 및 파일 복사
+WORKDIR /app
+COPY ./app /app
+
+# 필요한 패키지 설치 및 로케일 설정
+# 필요한 패키지 설치 및 로케일 설정
+RUN dnf update -y && dnf install -y \
+    epel-release \
+    && dnf install -y \
+    net-tools \
+    iputils \
+    curl \
+    wget \
+    vim \
+    bind-utils \
+    sudo \
+    git \
+    openssh-server \
+    python3 \
+    python3-pip \
+    --allowerasing \
+    && pip3 install ansible \
+    && dnf clean all
+
+
+# SSH 서버 설정 및 호스트 키 생성
+RUN mkdir /var/run/sshd \
+    && ssh-keygen -A \
+    && echo 'root:1234qwer!!' | chpasswd \
+    && sed -i 's/#PermitRootLogin yes/PermitRootLogin yes/' /etc/ssh/sshd_config 
+    # && echo 'export LANG=ko_KR.UTF-8' >> /etc/profile
+
+
+
+# 포트 22 열기
+EXPOSE 22
+
+# /app/first-process.sh 스크립트 /bin/bash 를사용하여 실행
+CMD ["/bin/bash", "/app/first-process.sh"]

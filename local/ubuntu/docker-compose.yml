@@ -1,11 +1,12 @@
 services:
-  local-ubuntu-1:
+  local-centos-1:
     restart: always
-    build: .
-    # build:
+    # build: .
+    build:
       # context: ./local/ubuntu
-      # dockerfile: Dockerfile
-    image: local-ubuntu-image-1:latest
+      context: .
+      dockerfile: Dockerfile.centos
+    image: local-centos-image-1:latest
     ports:
       - "2222:22"
     volumes:
@@ -24,16 +25,46 @@ services:
         max-size: "10m"
         max-file: "3"
     env_file:
-      - .env.local-ubuntu-1
-      - .env.ubuntu
+      - envs/.env.ansible-server
+      - envs/.env.local-centos-1
+
+  local-ubuntu-1:
+    restart: always
+    # build: .
+    build:
+      context: .
+      dockerfile: Dockerfile.ubuntu
+    image: local-ubuntu-image-1:latest
+    ports:
+      - "2223:22"
+    volumes:
+      - ./data:/data
+      - ./ssh:/root/.ssh
+    networks:
+      - my-network
+    deploy:
+      resources:
+        limits:
+          cpus: '1'
+          memory: 500M
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+    env_file:
+      - envs/.env.local-ubuntu-1
+      - envs/.env.ubuntu
 
 
   local-ubuntu-2:
     restart: always
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile.ubuntu
     image: local-ubuntu-image-2:latest
     ports:
-      - "2223:22"
+      - "2224:22"
     volumes:
       - ./data:/data
       - ./ssh:/root/.ssh
@@ -52,39 +83,9 @@ services:
         max-size: "10m"
         max-file: "3"  
     env_file:
-      - .env.local-ubuntu-2
-      - .env.ubuntu        
-
-  local-ubuntu-3:
-    restart: always
-    build: .
-    image: local-ubuntu-image-3:latest
-    ports:
-      - "2224:22"    
-    volumes:
-      - ./data:/data
-      - ./ssh:/root/.ssh
-    networks:
-      - my-network
-    depends_on:
-      - local-ubuntu-1
-      - local-ubuntu-2
-    deploy:
-      resources:
-        limits:
-          cpus: '1'
-          memory: 500M
-        # reservations:
-        #   cpus: '0.0001'
-        #   memory: 20M      
-    logging:
-      driver: "json-file"
-      options:
-        max-size: "10m"
-        max-file: "3"     
-    env_file:
-      - .env.local-ubuntu-3
-      - .env.ubuntu           
+      - envs/.env.local-ubuntu-2
+      - envs/.env.ubuntu        
+          
 
 networks:
   my-network:

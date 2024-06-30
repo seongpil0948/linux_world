@@ -1,7 +1,7 @@
 # 기본 Ubuntu 이미지를 사용
 FROM ubuntu:latest
 
-LABEL description="Local Linux Development Environment"
+LABEL description="Local Linux Development Environment (Ubuntu)"
 
 # 환경 변수 설정
 ENV DEBIAN_FRONTEND=noninteractive
@@ -22,26 +22,26 @@ RUN apt-get update && apt-get install -y \
     sudo \
     git \
     openssh-server \
-    && locale-gen ko_KR.UTF-8 \
-    && update-locale LANG=ko_KR.UTF-8 \
+    software-properties-common \
     && apt-get clean
+    # && locale-gen ko_KR.UTF-8 \
+    # && update-locale LANG=ko_KR.UTF-8 \
 
-# 로케일 환경 변수 설정
-ENV LANG=ko_KR.UTF-8 \
-    LANGUAGE=ko_KR:ko \
-    LC_ALL=ko_KR.UTF-8
+# Ansible 설치
+RUN add-apt-repository --yes --update ppa:ansible/ansible \
+    && apt-get install -y ansible
+
+
 
 # SSH 서버 설정
 RUN mkdir /var/run/sshd \
     && echo 'root:root' | chpasswd \
-    && sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config \
-    && echo 'export LANG=ko_KR.UTF-8' >> /etc/default/locale
+    && sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
+    # && echo 'export LANG=ko_KR.UTF-8' >> /etc/default/locale
 
 RUN echo 'root:1234qwer!!' | chpasswd
 
 # 포트 22 열기
 EXPOSE 22
 
-CMD ["/usr/sbin/sshd", "-D", "-e"]
-# -D: 데몬으로 실행하지 않고 프로세스로 실행
-# -e: 로그를 표준 오류로 출력(for logging)
+CMD ["/bin/bash", "/app/first-process.sh"]
