@@ -1,0 +1,145 @@
+{
+  "sellerCd": "99001",
+  "sellerStatusCd": "H",
+  "asisUserType": "Y",
+  "mallTypeList": "1|2|3",
+  "sellerTypeCd": "30",
+  "bestSellerYn": "Y",
+  "sellerBizNum": "1208610499",
+  "biznumCopyUrl": "",
+  "name": "엠서클_테스트 999",
+  "repname": "대표자명",
+  "bizcond": "업태",
+  "biztype": "업종",
+  "post": "135-715",
+  "addr1": "서울 강남구 삼성동 163-1",
+  "addr2": "6층",
+  "streetPost": "06170",
+  "streetAddr1": "서울 강남구 봉은사로 644 (삼성동, 대웅제약빌딩)",
+  "streetAddr2": "6층",
+  "dlvPost": "135-715",
+  "dlvAddr1": "서울 강남구 삼성동 163-1",
+  "dlvAddr2": "테스트00",
+  "dlvStreetPost": "06170",
+  "dlvStreetAddr1": "서울 강남구 봉은사로 644 (삼성동, 대웅제약빌딩)",
+  "dlvStreetAddr2": "테스트00",
+  "email": "choljongin@mcircle.biz",
+  "phone": "02-550-8738",
+  "fax": "02-235-4555",
+  "csTel": "070-0953-4355",
+  "csFax": "02-0565-1126",
+  "csTime": "월|금|09|18",
+  "whlsYn": "Y",
+  "whlsMgrEmail": "whls@email",
+  "whlsMgrFax": "02-0093-3232",
+  "whlsMgrTel": "010-3235-8884",
+  "joinDt": "20230301",
+  "leaveDt": "",
+  "sellerId": "theshop3000",
+  "sellerPwd": "theshop3",
+  "mgrNm": "담당자명2",
+  "mgrTel": "010-2201-0090",
+  "mgrEmail": "choljongin@mcircle.biz",
+  "accounts": [
+    {
+      "sellerId": "theshop3001",
+      "sellerPwd": "theshop3",
+      "sellerNm": "담당자1",
+      "phone": "010-2343-0043",
+      "email": "urrst@nate.com",
+      "note": "판매담당자"
+    },
+    {
+      "sellerId": "theshop3002",
+      "sellerPwd": "theshop3",
+      "sellerNm": "담당자2",
+      "phone": "010-2343-0044",
+      "email": "0943ppore@google.com",
+      "note": "상품담당자"
+    }
+  ],
+  "dlrvyBasicPrice": "4000",
+  "dlrvyFreeYn": "Y",
+  "orderableYn": "Y",
+  "dlvryPrice": "2500",
+  "returnPrice": "3000",
+  "dlvryOptionYn": "Y",
+  "dlvryMsg": "※ 주문금지\r\n본 공급사는 테스트 계정입니다.\r\n일반 회원이 주문 시 별도 연락없이 주문취소 됨을 알려드립니다.",
+  "dlvrySmsYn": "Y",
+  "sellerTransBasicAreas": [
+    {
+      "transBasicPrice": "200000",
+      "addr": "서울",
+      "addr2": "종로구",
+      "addr3": "행촌동",
+      "useYn": "Y"
+    },
+    {
+      "transBasicPrice": "100000",
+      "addr": "경남",
+      "addr2": "창원시",
+      "addr3": "상남동",
+      "useYn": "Y"
+    },
+    {
+      "transBasicPrice": "200000",
+      "addr": "대구",
+      "addr2": "수성구",
+      "addr3": "범일동",
+      "useYn": "Y"
+    }
+  ],
+  "adminCaution": "",
+  "billPrintOption": "03",
+  "settlementCycle": "02",
+  "bankAccount": "1234-45678",
+  "bankAccountCopyUrl": "",
+  "bankName": "은행명2",
+  "accountHolder": "이무나",
+  "etaxbilIssueYn": "Y",
+  "etaxbilDlvrYn": "N",
+  "etaxbilMergeSeq": "7592",
+  "etaxbilMergeYN": "Y",
+  "etaxbilMergeStartDt": "20230701",
+  "etaxbilMergeEndDt": "20230727",
+  "membershipProductSaleYn": "N",
+  "tradeItem": "약품,의약품",
+  "salesItem": [
+    {
+      "itemCd": "01",
+      "costSaleYn": "N"
+    },
+    {
+      "itemCd": "02",
+      "costSaleYn": "N"
+    },
+    {
+      "itemCd": "03",
+      "costSaleYn": "Y"
+    }
+  ],
+  "salesAvailableAreaCd": "02",
+  "salesAvailableArea": [
+    {
+      "sido": "서울",
+      "gugun": "관악구",
+      "dong": ""
+    },
+    {
+      "sido": "서울",
+      "gugun": "구로구",
+      "dong": ""
+    },
+    {
+      "sido": "서울",
+      "gugun": "마포구",
+      "dong": ""
+    }
+  ],
+  "salesRestrictUser": "1000082014,1000081993,1000081924",
+  "salesApprovalUser": "1000081753,1000081722,1000081700",
+  "dwBaseAreaYn": "Y",
+  "dwBaseAreaCd": "401",
+  "sortNo": "9999",
+  "couponYn": "N"
+}
